@@ -14,6 +14,13 @@
 		5C2D43ED1F15446800DDFC92 /* rssi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C2D43EB1F15446800DDFC92 /* rssi.xcdatamodeld */; };
 		5C2D43EF1F15446800DDFC92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D43EE1F15446800DDFC92 /* Assets.xcassets */; };
 		5C2D43F21F15446800DDFC92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2D43F01F15446800DDFC92 /* LaunchScreen.storyboard */; };
+		5C30465D1F1D045200E89DA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C30465C1F1D045200E89DA7 /* Constants.swift */; };
+		5C30465F1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C30465E1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift */; };
+		5C3046611F1D556C00E89DA7 /* Hospital.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046601F1D556C00E89DA7 /* Hospital.swift */; };
+		5C3046631F1D55AF00E89DA7 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046621F1D55AF00E89DA7 /* Map.swift */; };
+		5C3046651F1D567F00E89DA7 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046641F1D567F00E89DA7 /* Gateway.swift */; };
+		5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046661F1D630900E89DA7 /* AppManager.swift */; };
+		5C5659BA1F1E719000C329F7 /* AddHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */; };
 		5CC39ED61F155B030006BAF4 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = 5CC39ED41F155A4F0006BAF4 /* Pods */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +35,13 @@
 		5C2D43EE1F15446800DDFC92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C2D43F11F15446800DDFC92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C2D43F31F15446800DDFC92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C30465C1F1D045200E89DA7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5C30465E1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalCollectionViewCell.swift; sourceTree = "<group>"; };
+		5C3046601F1D556C00E89DA7 /* Hospital.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hospital.swift; sourceTree = "<group>"; };
+		5C3046621F1D55AF00E89DA7 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		5C3046641F1D567F00E89DA7 /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
+		5C3046661F1D630900E89DA7 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHospitalViewController.swift; sourceTree = "<group>"; };
 		5CC39ED41F155A4F0006BAF4 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		A2DA21101FFDA2ECF8825FA8 /* Pods-rssi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rssi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rssi/Pods-rssi.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +96,13 @@
 				5C2D43F01F15446800DDFC92 /* LaunchScreen.storyboard */,
 				5C2D43F31F15446800DDFC92 /* Info.plist */,
 				5C2D43EB1F15446800DDFC92 /* rssi.xcdatamodeld */,
+				5C30465C1F1D045200E89DA7 /* Constants.swift */,
+				5C30465E1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift */,
+				5C3046601F1D556C00E89DA7 /* Hospital.swift */,
+				5C3046621F1D55AF00E89DA7 /* Map.swift */,
+				5C3046641F1D567F00E89DA7 /* Gateway.swift */,
+				5C3046661F1D630900E89DA7 /* AppManager.swift */,
+				5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */,
 			);
 			path = rssi;
 			sourceTree = "<group>";
@@ -219,9 +240,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5659BA1F1E719000C329F7 /* AddHospitalViewController.swift in Sources */,
+				5C30465D1F1D045200E89DA7 /* Constants.swift in Sources */,
 				5C2D43ED1F15446800DDFC92 /* rssi.xcdatamodeld in Sources */,
+				5C3046651F1D567F00E89DA7 /* Gateway.swift in Sources */,
+				5C30465F1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift in Sources */,
+				5C3046631F1D55AF00E89DA7 /* Map.swift in Sources */,
 				5C2D43E71F15446800DDFC92 /* ViewController.swift in Sources */,
+				5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */,
 				5C2D43E51F15446800DDFC92 /* AppDelegate.swift in Sources */,
+				5C3046611F1D556C00E89DA7 /* Hospital.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
