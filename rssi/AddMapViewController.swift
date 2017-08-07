@@ -27,6 +27,8 @@ class AddMapViewController: UIViewController {
         
         let plot = Plot_(context: managedObjectContext)
         plot.image = UIImagePNGRepresentation(image)! as NSData
+        plot.name = mapNameField.text
+        
         
         let hospitalFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospital_")
         do {
@@ -51,6 +53,11 @@ class AddMapViewController: UIViewController {
         } catch {
             fatalError("Unable to save plot to core data")
         }
+        
+      //  let hospitalController = self.presentingViewController as! HospitalViewController
+       // appManager.loadDataFromDataStore()
+        
+        
         
         
         self.dismiss(animated: true, completion: nil)
