@@ -12,11 +12,13 @@ import UIKit
 class Map {
     var mapImage : UIImage = UIImage()
     var gateways : [Gateway] = [Gateway()]
+    var label: String = ""
     
-    convenience init(mapImage: UIImage, gateways: [Gateway]) {
+    convenience init(mapImage: UIImage, gateways: [Gateway], label: String) {
         self.init()
         self.mapImage = mapImage
         self.gateways = gateways
+        self.label = label
     }
     
 }

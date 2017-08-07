@@ -9,7 +9,7 @@
 import UIKit
 import TOCropViewController
 
-class ViewController: UIViewController, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -69,6 +69,20 @@ extension ViewController {
         cell.backgroundColor = Constants.Color.material_gray
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "hospitalSegue", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "hospitalSegue" {
+            return
+        }
+        let dvc = segue.destination as! HospitalViewController
+        
+        dvc.hospital = appManager.hospitals[collectionView.indexPathsForSelectedItems![0].row]
     }
 }
 

@@ -41,7 +41,6 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXE-eZ-FSP">
                                                     <rect key="frame" x="20" y="31" width="110" height="31.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -86,6 +85,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="dzN-JH-AaT"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="oX2-6d-9PV"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -109,11 +109,64 @@
                         <outlet property="collectionView" destination="hQi-hr-L8U" id="hHa-3J-lCO"/>
                         <outlet property="menuButton" destination="MeE-Ks-J6M" id="ZYy-kY-b7D"/>
                         <segue destination="xnO-1Q-fxH" kind="presentation" identifier="addHospitalModal" modalPresentationStyle="formSheet" id="2CW-C7-k6j"/>
+                        <segue destination="DmP-M9-1hH" kind="show" identifier="hospitalSegue" id="sEr-EX-n3k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-149" y="-392"/>
+        </scene>
+        <!--Hosptial Name (Acronym)-->
+        <scene sceneID="Sem-vD-R4V">
+            <objects>
+                <viewController title="Hosptial Name (Acronym)" id="DmP-M9-1hH" customClass="HospitalViewController" customModule="rssi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="db2-HQ-gwP"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Dd-0i-MFP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sIG-3P-EqQ">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKO-7e-DZI">
+                                <rect key="frame" x="694" y="72" width="62" height="30"/>
+                                <state key="normal" title="Add Map"/>
+                                <connections>
+                                    <action selector="addMapButtonPressed:" destination="DmP-M9-1hH" eventType="touchUpInside" id="1GW-fJ-HZz"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mhO-VY-d4C">
+                                <rect key="frame" x="20" y="110" width="728" height="894"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="DmP-M9-1hH" id="YqG-Zz-K9F"/>
+                                    <outlet property="delegate" destination="DmP-M9-1hH" id="giz-WX-iqP"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-k0-Vst">
+                                <rect key="frame" x="20" y="72" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mhO-VY-d4C" firstAttribute="trailing" secondItem="sIG-3P-EqQ" secondAttribute="trailingMargin" id="JHz-Eq-Drb"/>
+                            <constraint firstItem="2Dd-0i-MFP" firstAttribute="top" secondItem="mhO-VY-d4C" secondAttribute="bottom" constant="20" id="PPV-iO-LOH"/>
+                            <constraint firstItem="mhO-VY-d4C" firstAttribute="leading" secondItem="sIG-3P-EqQ" secondAttribute="leadingMargin" id="Slm-yI-bEY"/>
+                            <constraint firstAttribute="trailing" secondItem="uKO-7e-DZI" secondAttribute="trailing" constant="12" id="aiR-me-FcR"/>
+                            <constraint firstItem="mhO-VY-d4C" firstAttribute="top" secondItem="uKO-7e-DZI" secondAttribute="bottom" constant="8" id="wrD-hr-EOc"/>
+                            <constraint firstItem="uKO-7e-DZI" firstAttribute="top" secondItem="db2-HQ-gwP" secondAttribute="bottom" constant="8" id="yMP-kk-2hC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="DL6-k0-Vst" id="iQo-TL-pf6"/>
+                        <segue destination="Ydo-PF-Y9a" kind="presentation" identifier="createMap" modalPresentationStyle="formSheet" id="H8x-Ug-47T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oea-34-7D4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509" y="-393"/>
         </scene>
         <!--Add Hospital View Controller-->
         <scene sceneID="HAf-9q-b1s">
@@ -188,7 +241,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjE-IH-x1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514.84375" y="-393.1640625"/>
+            <point key="canvasLocation" x="-102" y="-934"/>
+        </scene>
+        <!--Add Map View Controller-->
+        <scene sceneID="b70-fK-5ZH">
+            <objects>
+                <viewController id="Ydo-PF-Y9a" customClass="AddMapViewController" customModule="rssi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aOW-vg-I0H"/>
+                        <viewControllerLayoutGuide type="bottom" id="kFw-0p-rc1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PJQ-gh-vWN">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zx2-G2-rDb">
+                                <rect key="frame" x="20" y="99" width="500" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QpP-jK-2UI">
+                                <rect key="frame" x="20" y="156.5" width="500" height="307"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="307" id="HKi-ZQ-KIU"/>
+                                    <constraint firstAttribute="width" constant="500" id="Svz-KI-Zgw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name this map: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYW-vQ-Cjg">
+                                <rect key="frame" x="20" y="70" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-fZ-9ui">
+                                <rect key="frame" x="230" y="528" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Map"/>
+                                <connections>
+                                    <action selector="createMapPressed:" destination="Ydo-PF-Y9a" eventType="touchUpInside" id="8uO-cO-XPh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QpP-jK-2UI" firstAttribute="centerX" secondItem="PJQ-gh-vWN" secondAttribute="centerX" id="74b-Nx-thu"/>
+                            <constraint firstItem="QpP-jK-2UI" firstAttribute="centerY" secondItem="PJQ-gh-vWN" secondAttribute="centerY" id="eL9-Pb-Ub7"/>
+                        </constraints>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imgView" destination="QpP-jK-2UI" id="MLg-YG-BhQ"/>
+                        <outlet property="mapNameField" destination="Zx2-G2-rDb" id="qEk-VE-Dfy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tEr-Pe-XTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="471.875" y="-934.57031249999989"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Ei-jp-Kx5">

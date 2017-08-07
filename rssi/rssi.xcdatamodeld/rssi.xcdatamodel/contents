@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Hospital_" representedClassName="Hospital_" syncable="YES" codeGenerationType="class">
+        <attribute name="acronym" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Plot_" inverseName="relationship" inverseEntity="Plot_" syncable="YES"/>
+    </entity>
+    <entity name="Plot_" representedClassName="Plot_" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hospital_" inverseName="relationship" inverseEntity="Hospital_" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Hospital_" positionX="-353" positionY="-135" width="128" height="105"/>
+        <element name="Plot_" positionX="189" positionY="-18" width="128" height="75"/>
+    </elements>
 </model>

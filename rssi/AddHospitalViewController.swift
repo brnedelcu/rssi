@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -52,7 +53,21 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         appManager.addHosptial(name: hospitalName, acronym: acronym, color: colorTheme)
         
+        // core data
+        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let hospital = Hospital_(context: managedObjectContext)
+        hospital.name = hospitalName
+        hospital.acronym = acronym
+        hospital.color = c
+        
         appManager.hospitalCollectionView?.reloadData()
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Unable to save hospital to core data")
+        }
         
 
     }
