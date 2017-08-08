@@ -63,14 +63,15 @@ class AppManager {
                         let gateways = plot.gateways
                         
                         for gateway in gateways! {
+                            print("We found a gateway for this map!")
                             let newGateway = Gateway()
                             let g = gateway as! Gateway_
                             let name = g.value(forKey: "name") as! String
                             let x = g.value(forKey: "x") as! Float
                             let y = g.value(forKey: "y") as! Float
                             newGateway.name = name
-                            newGateway.x = x
-                            newGateway.y = y
+                            newGateway.x = CGFloat(x)
+                            newGateway.y = CGFloat(y)
                             gWays.append(newGateway)
                             
                         }
@@ -86,6 +87,42 @@ class AppManager {
         }
         
         return maps
+    }
+    
+    func saveGatewayToMap(hospitalName: String, mapName: String, gateway: Gateway) {
+        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let hospitalFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospital_")
+        do {
+            let fetchedHospitals = try managedObjectContext.fetch(hospitalFetch)
+            
+            for i in 0..<fetchedHospitals.count {
+                let entry = fetchedHospitals[i] as! Hospital_
+                //print((entry as AnyObject).value(forKey: "name") ?? "Could not fetch name values in AppManager::loadDataFromDataStore")
+                let name = (entry as AnyObject).value(forKey: "name") as! String
+                if name == hospitalName {
+                    for j in entry.relationship! {
+                        let map = j as! Plot_
+                        if map.name == mapName {
+                            let gWay = Gateway_(context: managedObjectContext)
+                            gWay.name = gateway.name
+                            gWay.x = Float(gateway.x)
+                            gWay.y = Float(gateway.y)
+                        
+                            map.addToGateways(gWay)
+                        }
+                    }
+                }
+            }
+            
+        } catch {
+            fatalError("Could not load hospital data in AddMapViewController")
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Could not save to core data")
+        }
     }
     
     func addHosptial(name: String, acronym: String, color: UIColor) {

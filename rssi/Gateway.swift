@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class Gateway {
     var name = ""
-    var x : Float = 0.0
-    var y : Float = 0.0
+    var x : CGFloat = 0.0
+    var y : CGFloat = 0.0
 }

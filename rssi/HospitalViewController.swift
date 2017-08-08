@@ -26,6 +26,10 @@ class HospitalViewController: UIViewController, UIImagePickerControllerDelegate,
         maps = appManager.loadMapsForHospital(hospitalName: hospital.name)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.mapsTableView.reloadData()
+    }
+    
     @IBAction func addMapButtonPressed(_ sender: Any) {
         activityIndicator.startAnimating()
         let pickerController = UIImagePickerController();
@@ -40,6 +44,7 @@ class HospitalViewController: UIViewController, UIImagePickerControllerDelegate,
         if (segue.identifier == "mapSegue") {
             let dvc = segue.destination as! MapViewController
             dvc.map = self.maps[(mapsTableView.indexPathForSelectedRow?.row)!]
+            dvc.hospitalName = self.hospital.name
         } else {
             let dvc = segue.destination as! AddMapViewController
             print("In prepare for segue");
@@ -47,8 +52,6 @@ class HospitalViewController: UIViewController, UIImagePickerControllerDelegate,
             dvc.hospitalName = hospital.name
         }
     }
-    
-    
 }
 
 extension HospitalViewController {

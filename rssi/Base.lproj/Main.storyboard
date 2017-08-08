@@ -185,22 +185,40 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-6r-jjU">
                                 <rect key="frame" x="20" y="72" width="728" height="932"/>
                             </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwQ-1r-V8m">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="g6N-T1-mJG">
+                                        <barButtonItem key="rightBarButtonItem" title="Plot Gateway" id="Kxm-QH-1Ru"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="top" secondItem="nzt-BW-n02" secondAttribute="bottom" constant="8" id="VhI-8i-JeD"/>
                             <constraint firstItem="yIK-O9-S6r" firstAttribute="top" secondItem="a0Q-6r-jjU" secondAttribute="bottom" constant="20" id="aCw-2A-MX6"/>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="trailing" secondItem="QUk-rq-wlc" secondAttribute="trailingMargin" id="hZm-xD-IPA"/>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leadingMargin" id="n0z-Zl-tlh"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="CBO-MY-FyT" appends="YES" id="RHb-lH-FBr"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="mapImageView" destination="a0Q-6r-jjU" id="dWQ-aY-cUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J85-c5-eYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CBO-MY-FyT">
+                    <connections>
+                        <action selector="userTappedScreen:" destination="nSC-Tj-1mO" id="BBd-VM-dk6"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1325" y="-448.24218749999994"/>
+            <point key="canvasLocation" x="1367" y="-430"/>
         </scene>
         <!--Add Hospital View Controller-->
         <scene sceneID="HAf-9q-b1s">
