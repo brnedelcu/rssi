@@ -58,7 +58,7 @@ class AddMapViewController: UIViewController {
         let hospitalViewController = navigationController.viewControllers[1] as! HospitalViewController
         hospitalViewController.viewDidLoad()
         
-        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "unwindToHospitalViewController", sender: self)
         
     }
     

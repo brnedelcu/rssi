@@ -10,10 +10,13 @@ import UIKit
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapImageView: UIImageView!
+    var map : Map! // to be set in prepare for segue
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        mapImageView.image = map.mapImage
     }
 
 }

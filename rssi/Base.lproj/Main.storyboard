@@ -163,16 +163,17 @@
                         <outlet property="activityIndicator" destination="DL6-k0-Vst" id="iQo-TL-pf6"/>
                         <outlet property="mapsTableView" destination="mhO-VY-d4C" id="nW6-i7-IxE"/>
                         <segue destination="Ydo-PF-Y9a" kind="presentation" identifier="createMap" modalPresentationStyle="formSheet" id="H8x-Ug-47T"/>
+                        <segue destination="nSC-Tj-1mO" kind="show" identifier="mapSegue" id="BLg-O1-yVt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oea-34-7D4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="512" y="-393"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="R1y-2T-epR">
             <objects>
-                <viewController id="nSC-Tj-1mO" sceneMemberID="viewController">
+                <viewController id="nSC-Tj-1mO" customClass="MapViewController" customModule="rssi" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nzt-BW-n02"/>
                         <viewControllerLayoutGuide type="bottom" id="yIK-O9-S6r"/>
@@ -180,12 +181,26 @@
                     <view key="view" contentMode="scaleToFill" id="QUk-rq-wlc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-6r-jjU">
+                                <rect key="frame" x="20" y="72" width="728" height="932"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="top" secondItem="nzt-BW-n02" secondAttribute="bottom" constant="8" id="VhI-8i-JeD"/>
+                            <constraint firstItem="yIK-O9-S6r" firstAttribute="top" secondItem="a0Q-6r-jjU" secondAttribute="bottom" constant="20" id="aCw-2A-MX6"/>
+                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="trailing" secondItem="QUk-rq-wlc" secondAttribute="trailingMargin" id="hZm-xD-IPA"/>
+                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leadingMargin" id="n0z-Zl-tlh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapImageView" destination="a0Q-6r-jjU" id="dWQ-aY-cUG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J85-c5-eYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="-448"/>
+            <point key="canvasLocation" x="1325" y="-448.24218749999994"/>
         </scene>
         <!--Add Hospital View Controller-->
         <scene sceneID="HAf-9q-b1s">
@@ -314,9 +329,11 @@
                     <connections>
                         <outlet property="imgView" destination="QpP-jK-2UI" id="MLg-YG-BhQ"/>
                         <outlet property="mapNameField" destination="Zx2-G2-rDb" id="qEk-VE-Dfy"/>
+                        <segue destination="mUD-ku-ic6" kind="unwind" identifier="unwindToHospitalViewController" unwindAction="unwindToHospitalViewControllerWithSegue:" id="fk6-Cl-gNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEr-Pe-XTc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mUD-ku-ic6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="471.875" y="-934.57031249999989"/>
         </scene>
@@ -340,6 +357,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="image" width="4032" height="3024"/>
         <image name="menu" width="16" height="16"/>
     </resources>
 </document>
