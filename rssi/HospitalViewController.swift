@@ -16,16 +16,18 @@ class HospitalViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var image : UIImage? = UIImage()
     var maps : [Map] = []
-    
+    @IBOutlet weak var mapsTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "\(hospital.name) (\(hospital.acronym))"
         // Do any additional setup after loading the view.
         maps = appManager.loadMapsForHospital(hospitalName: hospital.name)
-        
-
     }
         
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("This happend here")
+    }
     
     @IBAction func addMapButtonPressed(_ sender: Any) {
         activityIndicator.startAnimating()
@@ -77,8 +79,4 @@ class HospitalViewController: UIViewController, UIImagePickerControllerDelegate,
         cell.textLabel?.text = maps[indexPath.row].label
         return cell
     }
-    
-    
-    
-
 }

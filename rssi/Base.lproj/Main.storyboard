@@ -161,12 +161,31 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="DL6-k0-Vst" id="iQo-TL-pf6"/>
+                        <outlet property="mapsTableView" destination="mhO-VY-d4C" id="nW6-i7-IxE"/>
                         <segue destination="Ydo-PF-Y9a" kind="presentation" identifier="createMap" modalPresentationStyle="formSheet" id="H8x-Ug-47T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oea-34-7D4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509" y="-393"/>
+            <point key="canvasLocation" x="512" y="-393"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="R1y-2T-epR">
+            <objects>
+                <viewController id="nSC-Tj-1mO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nzt-BW-n02"/>
+                        <viewControllerLayoutGuide type="bottom" id="yIK-O9-S6r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QUk-rq-wlc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J85-c5-eYR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1325" y="-448"/>
         </scene>
         <!--Add Hospital View Controller-->
         <scene sceneID="HAf-9q-b1s">

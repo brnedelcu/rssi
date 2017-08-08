@@ -54,12 +54,14 @@ class AddMapViewController: UIViewController {
             fatalError("Unable to save plot to core data")
         }
         
-      //  let hospitalController = self.presentingViewController as! HospitalViewController
-       // appManager.loadDataFromDataStore()
-        
-        
-        
+        let navigationController = self.presentingViewController as! UINavigationController
+        let hospitalViewController = navigationController.viewControllers[1] as! HospitalViewController
+        hospitalViewController.viewDidLoad()
         
         self.dismiss(animated: true, completion: nil)
+        
     }
+    
+    
+    
 }

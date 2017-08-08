@@ -22,6 +22,7 @@
 		5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046661F1D630900E89DA7 /* AppManager.swift */; };
 		5C5659BA1F1E719000C329F7 /* AddHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */; };
 		5CC39ED61F155B030006BAF4 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = 5CC39ED41F155A4F0006BAF4 /* Pods */; };
+		5CC62F5B1F3A15D3004307CB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC62F5A1F3A15D3004307CB /* MapViewController.swift */; };
 		5CFD39701F30E75900401FDC /* HospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFD396F1F30E75900401FDC /* HospitalViewController.swift */; };
 		5CFD39721F31101A00401FDC /* AddMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFD39711F31101A00401FDC /* AddMapViewController.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		5C3046661F1D630900E89DA7 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHospitalViewController.swift; sourceTree = "<group>"; };
 		5CC39ED41F155A4F0006BAF4 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
+		5CC62F5A1F3A15D3004307CB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5CFD396F1F30E75900401FDC /* HospitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalViewController.swift; sourceTree = "<group>"; };
 		5CFD39711F31101A00401FDC /* AddMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMapViewController.swift; sourceTree = "<group>"; };
 		A2DA21101FFDA2ECF8825FA8 /* Pods-rssi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rssi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rssi/Pods-rssi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */,
 				5CFD396F1F30E75900401FDC /* HospitalViewController.swift */,
 				5CFD39711F31101A00401FDC /* AddMapViewController.swift */,
+				5CC62F5A1F3A15D3004307CB /* MapViewController.swift */,
 			);
 			path = rssi;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				5C3046651F1D567F00E89DA7 /* Gateway.swift in Sources */,
 				5C30465F1F1D44B700E89DA7 /* HospitalCollectionViewCell.swift in Sources */,
 				5CFD39701F30E75900401FDC /* HospitalViewController.swift in Sources */,
+				5CC62F5B1F3A15D3004307CB /* MapViewController.swift in Sources */,
 				5C3046631F1D55AF00E89DA7 /* Map.swift in Sources */,
 				5C2D43E71F15446800DDFC92 /* ViewController.swift in Sources */,
 				5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */,
