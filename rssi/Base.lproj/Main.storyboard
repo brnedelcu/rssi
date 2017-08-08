@@ -190,7 +190,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem id="g6N-T1-mJG">
-                                        <barButtonItem key="rightBarButtonItem" title="Plot Gateway" id="Kxm-QH-1Ru"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Plot Gateway" id="Kxm-QH-1Ru">
+                                            <connections>
+                                                <action selector="plotGatewayButtonPressed:" destination="nSC-Tj-1mO" id="CP2-Lq-S4t"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
