@@ -13,6 +13,9 @@ import CoreGraphics
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var plotGatewayButton: UIBarButtonItem!
+    
     var map : Map! // to be set in prepare for segue
     var hospitalName: String!
     var plotting = false
@@ -22,14 +25,19 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapImageView.image = map.mapImage
         self.loadGateways()
+        statusLabel.text = "Inspect Gateway Mode"
     }
     
     
     @IBAction func plotGatewayButtonPressed(_ sender: Any) {
         if (plotting) {
             // insert styling here to show that we are not plotting
+            statusLabel.text = "Inspect Gateway Mode"
+            plotGatewayButton.title = "Plot Gateway"
         } else {
             // insert styling here to show that we are plotting
+            statusLabel.text = "Plotting Mode"
+            plotGatewayButton.title = "Inspect Gateways"
         }
         
         plotting = !plotting
@@ -44,15 +52,27 @@ class MapViewController: UIViewController {
             let g = self.findSelectedGateway(point: sender.location(in: mapImageView))
             if let result = g {
                 let alertController = UIAlertController(title: "Gateway \(result.name)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-                let doneAction = UIAlertAction(title: "Done", style: UIAlertActionStyle.default, handler: nil)
-                let removeAction = UIAlertAction(title: "Remove Gateway", style: UIAlertActionStyle.destructive, handler: nil)
+                let doneAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil)
+                let removeAction = UIAlertAction(title: "Remove Gateway", style: UIAlertActionStyle.destructive, handler: { (action) in
+                    var counter = 0
+                    for gateway in self.map.gateways {
+                        if (gateway.name == result.name) {
+                            self.map.gateways.remove(at: counter)
+                            appManager.removeGatewayFromMap(hospitalName: self.hospitalName, mapName: self.map.label, gway: gateway)
+                            self.loadGateways()
+                            break
+                        }
+                        counter += 1
+                    }
+    
+                    
+                })
                 
                 
                 alertController.addAction(doneAction)
                 alertController.addAction(removeAction)
                 
                 self.present(alertController, animated: true, completion: nil)
-                self.plotting = false
             }
         }
     }
@@ -88,6 +108,12 @@ extension MapViewController {
     }
     
     func loadGateways() {
+        
+        // The following to clear the current displayed gateways for reload
+        for view in mapImageView.subviews {
+            view.removeFromSuperview()
+        }
+        
         var count = 0
         for entry in map.gateways {
             let frame = CGRect(x: entry.x - 10, y: entry.y - 10, width: 20, height: 20)
