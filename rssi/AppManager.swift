@@ -83,9 +83,11 @@ class AppManager {
                             let name = g.value(forKey: "name") as! String
                             let x = g.value(forKey: "x") as! Float
                             let y = g.value(forKey: "y") as! Float
+                            let installed = g.value(forKey: "installed") as! Bool
                             newGateway.name = name
                             newGateway.x = CGFloat(x)
                             newGateway.y = CGFloat(y)
+                            newGateway.installed = installed
                             gWays.append(newGateway)
                             
                         }
@@ -151,6 +153,7 @@ class AppManager {
                             gWay.name = gateway.name
                             gWay.x = Float(gateway.x)
                             gWay.y = Float(gateway.y)
+                            gWay.installed = false
                         
                             map.addToGateways(gWay)
                         }
@@ -226,6 +229,31 @@ class AppManager {
             try managedObjectContext.save()
         } catch {
             fatalError("Could not save MOC in removeMapFromHospital()")
+        }
+    }
+    
+    func markGatewayAsInstalled(gateway: Gateway, truthVal: Bool) {
+        let moc = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let gatewayFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Gateway_")
+        do {
+            let fetchedGateways = try moc.fetch(gatewayFetch)
+            for i in 0..<fetchedGateways.count {
+                let entry = fetchedGateways[i] as! Gateway_
+                if (entry.name == gateway.name) {
+                    print("FOUND SOMETHING TO MARK")
+                    entry.installed = truthVal
+                    
+                }
+            }
+            
+        } catch {
+            fatalError("Could not mark gateway as installed in AppManager::markGatewayAsInstalled()")
+        }
+        
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Could not save to local datastore in AppManager::markGatewayAsInstalled")
         }
     }
     

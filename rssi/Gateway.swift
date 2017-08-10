@@ -11,6 +11,7 @@ import CoreGraphics
 
 class Gateway {
     var name = ""
+    var installed = false
     var x : CGFloat = 0.0
     var y : CGFloat = 0.0
 }

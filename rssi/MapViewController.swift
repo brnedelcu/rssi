@@ -59,6 +59,29 @@ class MapViewController: UIViewController {
             if let result = g {
                 let alertController = UIAlertController(title: "Gateway \(result.name)", message: nil, preferredStyle: UIAlertControllerStyle.alert)
                 let doneAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil)
+                let markAsInstalledAction = UIAlertAction(title: "Mark as installed", style: UIAlertActionStyle.default, handler: { (action) in
+                    appManager.markGatewayAsInstalled(gateway: result, truthVal: true)
+                    
+                    for gateway in self.map.gateways {
+                        if (gateway.name == result.name) {
+                            gateway.installed = true
+                        }
+                    }
+                    
+                    self.loadGateways()
+                })
+                
+                let markAsUninstalledAction = UIAlertAction(title: "Mark as unisntalled", style: UIAlertActionStyle.default, handler: { (action) in
+                    appManager.markGatewayAsInstalled(gateway: result, truthVal: false)
+                
+                    for gateway in self.map.gateways {
+                        if (gateway.name == result.name) {
+                            gateway.installed = false
+                        }
+                    }
+                    
+                    self.loadGateways()
+                })
                 let removeAction = UIAlertAction(title: "Remove Gateway", style: UIAlertActionStyle.destructive, handler: { (action) in
                     var counter = 0
                     for gateway in self.map.gateways {
@@ -74,9 +97,14 @@ class MapViewController: UIViewController {
                     
                 })
                 
-                
+                if (result.installed) {
+                    alertController.addAction(markAsUninstalledAction)
+                } else {
+                    alertController.addAction(markAsInstalledAction)
+                }
                 alertController.addAction(doneAction)
                 alertController.addAction(removeAction)
+                
                 
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -125,7 +153,10 @@ extension MapViewController {
             let frame = CGRect(x: entry.x - 10, y: entry.y - 10, width: 20, height: 20)
             let gatewayView = UIView(frame: frame)
             gatewayView.layer.cornerRadius = 10.0
-            gatewayView.backgroundColor = UIColor.red
+            gatewayView.backgroundColor = Constants.Color.material_red
+            if (entry.installed) {
+                gatewayView.backgroundColor = Constants.Color.material_blue
+            }
             mapImageView.addSubview(gatewayView)
             count += 1
         }
