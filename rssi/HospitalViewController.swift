@@ -73,6 +73,8 @@ extension HospitalViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hospitalCell") as! MapTableViewCell
         cell.titleTextLabel.text = maps[indexPath.row].label
+        cell.numberOfGatewaysLabel.text = "Number of gateways: \(maps[indexPath.row].gateways.count)"
+        
         
         cell.imgView.image = maps[indexPath.row].mapImage
         return cell
