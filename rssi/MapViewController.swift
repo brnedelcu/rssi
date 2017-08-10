@@ -25,19 +25,25 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapImageView.image = map.mapImage
         self.loadGateways()
-        statusLabel.text = "Inspect Gateway Mode"
+        statusLabel.text = "     View Gateway Mode"
+        statusLabel.textColor = UIColor.white
+        statusLabel.backgroundColor = Constants.Color.material_blue
     }
     
     
     @IBAction func plotGatewayButtonPressed(_ sender: Any) {
         if (plotting) {
             // insert styling here to show that we are not plotting
-            statusLabel.text = "Inspect Gateway Mode"
-            plotGatewayButton.title = "Plot Gateway"
+            statusLabel.text = "     View Gateway Mode"
+            statusLabel.textColor = UIColor.white
+            statusLabel.backgroundColor = Constants.Color.material_blue
+            plotGatewayButton.title = "     Plot Gateway"
         } else {
             // insert styling here to show that we are plotting
-            statusLabel.text = "Plotting Mode"
-            plotGatewayButton.title = "Inspect Gateways"
+            statusLabel.text = "     Plotting Mode"
+            statusLabel.textColor = UIColor.white
+            statusLabel.backgroundColor = Constants.Color.material_green
+            plotGatewayButton.title = "     View Gateway"
         }
         
         plotting = !plotting

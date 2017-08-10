@@ -16,8 +16,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = Constants.Color.material_blue
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir Next", size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.barTintColor = Constants.Color.material_dark_gray
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         appManager.hospitalCollectionView = collectionView
     }
@@ -45,6 +46,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         self.present(alertViewController, animated: true, completion: nil)
     }
+    
+    
 }
 
 
@@ -63,10 +66,13 @@ extension ViewController {
         
         cell.acronymLabel.text = appManager.hospitals[indexPath.row].acronym
         cell.hostpitalNameLabel.text = appManager.hospitals[indexPath.row].name
-        cell.mapCountLabel.text = "# of maps: \(appManager.hospitals.count)"
+        cell.mapCountLabel.text = "# of maps: \(appManager.hospitals[indexPath.row].maps.count)"
         
         cell.layer.cornerRadius = 5.0
         cell.backgroundColor = Constants.Color.material_gray
+        
+        cell.colorView.backgroundColor = appManager.hospitals[indexPath.row].color
+        cell.colorView.layer.cornerRadius = 10.0
         
         return cell
     }

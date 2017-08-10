@@ -63,6 +63,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="piC-DU-xuW">
+                                                    <rect key="frame" x="127" y="8" width="15" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -78,6 +83,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="acronymLabel" destination="TXE-eZ-FSP" id="tc1-Nr-98Q"/>
+                                            <outlet property="colorView" destination="piC-DU-xuW" id="9qv-P0-hBe"/>
                                             <outlet property="hostpitalNameLabel" destination="5Qm-6M-Xzk" id="gLQ-pz-Bzn"/>
                                             <outlet property="mapCountLabel" destination="kdy-Ir-yIw" id="uU6-lW-cQ6"/>
                                         </connections>
@@ -97,7 +103,7 @@
                             <constraint firstItem="hQi-hr-L8U" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="r9q-Em-xXy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sites" id="fmc-xg-NXQ">
+                    <navigationItem key="navigationItem" title="Hospitals / Sites" id="fmc-xg-NXQ">
                         <barButtonItem key="rightBarButtonItem" image="menu" id="MeE-Ks-J6M">
                             <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -114,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="-392"/>
+            <point key="canvasLocation" x="-149.21875" y="-392.578125"/>
         </scene>
         <!--Hosptial Name (Acronym)-->
         <scene sceneID="Sem-vD-R4V">
@@ -156,14 +162,14 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vb2-jQ-eWX">
-                                                    <rect key="frame" x="226" y="21" width="83" height="21"/>
+                                                    <rect key="frame" x="226" y="21" width="494" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Gateways: 10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39a-Q5-YKU">
-                                                    <rect key="frame" x="226" y="61" width="188" height="21"/>
+                                                    <rect key="frame" x="226" y="61" width="494" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -234,7 +240,10 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6o-1O-fL7">
-                                <rect key="frame" x="20" y="992" width="594" height="21"/>
+                                <rect key="frame" x="0.0" y="980" width="631" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="CUR-1E-L3v"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -243,13 +252,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="yIK-O9-S6r" firstAttribute="top" secondItem="O6o-1O-fL7" secondAttribute="bottom" constant="11" id="TgY-eq-mxF"/>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="top" secondItem="nzt-BW-n02" secondAttribute="bottom" constant="8" id="VhI-8i-JeD"/>
                             <constraint firstItem="yIK-O9-S6r" firstAttribute="top" secondItem="a0Q-6r-jjU" secondAttribute="bottom" constant="20" id="aCw-2A-MX6"/>
+                            <constraint firstAttribute="trailing" secondItem="O6o-1O-fL7" secondAttribute="trailing" constant="137" id="cZA-g1-6M4"/>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="trailing" secondItem="QUk-rq-wlc" secondAttribute="trailingMargin" id="hZm-xD-IPA"/>
+                            <constraint firstItem="O6o-1O-fL7" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leading" id="jaC-KP-oxV"/>
                             <constraint firstItem="a0Q-6r-jjU" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leadingMargin" id="n0z-Zl-tlh"/>
-                            <constraint firstItem="O6o-1O-fL7" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leadingMargin" id="qi9-Fj-2Qb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="O6o-1O-fL7" secondAttribute="trailing" constant="134" id="zGj-Mt-tef"/>
+                            <constraint firstAttribute="bottom" secondItem="O6o-1O-fL7" secondAttribute="bottom" constant="-1" id="uKb-Su-wbz"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="CBO-MY-FyT" appends="YES" id="RHb-lH-FBr"/>
@@ -317,25 +326,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68g-kS-5dN">
-                                <rect key="frame" x="20" y="544" width="500" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-SY-pYI">
+                                <rect key="frame" x="20" y="544" width="245" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="doneButtonPressed:" destination="xnO-1Q-fxH" eventType="touchUpInside" id="QhE-fM-M3D"/>
+                                    <action selector="cancelButtonPressed:" destination="xnO-1Q-fxH" eventType="touchUpInside" id="4qC-FM-Yqy"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pBI-pZ-dWn">
                                 <rect key="frame" x="51" y="227" width="439" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68g-kS-5dN">
+                                <rect key="frame" x="275" y="544" width="245" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create Hospital"/>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="xnO-1Q-fxH" eventType="touchUpInside" id="QhE-fM-M3D"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="acronymTextField" destination="oZ5-Z5-KSd" id="2jH-Cx-WJu"/>
+                        <outlet property="cancelButton" destination="bUB-SY-pYI" id="Cae-1N-6xE"/>
                         <outlet property="doneButton" destination="68g-kS-5dN" id="YvC-bp-FaZ"/>
                         <outlet property="hospitalNameTextField" destination="PT7-hZ-2Mi" id="JKS-Qs-xHP"/>
                         <outlet property="pickerView" destination="pBI-pZ-dWn" id="9uE-6h-pWW"/>
@@ -343,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjE-IH-x1B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-102" y="-934"/>
+            <point key="canvasLocation" x="-102.34375" y="-934.57031249999989"/>
         </scene>
         <!--Add Map View Controller-->
         <scene sceneID="b70-fK-5ZH">
@@ -379,15 +398,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFx-fZ-9ui">
-                                <rect key="frame" x="230" y="528" width="80" height="30"/>
+                                <rect key="frame" x="275" y="525" width="245" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Create Map"/>
                                 <connections>
                                     <action selector="createMapPressed:" destination="Ydo-PF-Y9a" eventType="touchUpInside" id="8uO-cO-XPh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbh-xC-hPB">
+                                <rect key="frame" x="20" y="525" width="245" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Ydo-PF-Y9a" eventType="touchUpInside" id="lQ5-zK-fIR"/>
+                                    <action selector="createMapPressed:" destination="Ydo-PF-Y9a" eventType="touchUpInside" id="eJH-Gm-k11"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QpP-jK-2UI" firstAttribute="centerX" secondItem="PJQ-gh-vWN" secondAttribute="centerX" id="74b-Nx-thu"/>
                             <constraint firstItem="QpP-jK-2UI" firstAttribute="centerY" secondItem="PJQ-gh-vWN" secondAttribute="centerY" id="eL9-Pb-Ub7"/>
@@ -395,6 +425,8 @@
                     </view>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="cancelButton" destination="Kbh-xC-hPB" id="NlQ-YL-VEM"/>
+                        <outlet property="createMapButton" destination="JFx-fZ-9ui" id="wKO-eo-w4w"/>
                         <outlet property="imgView" destination="QpP-jK-2UI" id="MLg-YG-BhQ"/>
                         <outlet property="mapNameField" destination="Zx2-G2-rDb" id="qEk-VE-Dfy"/>
                         <segue destination="mUD-ku-ic6" kind="unwind" identifier="unwindToHospitalViewController" unwindAction="unwindToHospitalViewControllerWithSegue:" id="fk6-Cl-gNe"/>

@@ -28,10 +28,24 @@ class AppManager {
                 //print((entry as AnyObject).value(forKey: "name") ?? "Could not fetch name values in AppManager::loadDataFromDataStore")
                 let name = (entry as AnyObject).value(forKey: "name") as! String
                 let acronym = (entry as AnyObject).value(forKey: "acronym") as! String
-                let _ = (entry as AnyObject).value(forKey: "color") as! String
+                let colorString = (entry as AnyObject).value(forKey: "color") as! String
+                var finalColor = UIColor.black
+                if (colorString == "Red") {
+                    finalColor = Constants.Color.material_red
+                } else if (colorString == "Green") {
+                    finalColor = Constants.Color.material_green
+                } else if (colorString == "Yellow") {
+                    finalColor = Constants.Color.material_yellow
+                } else if (colorString == "Orange") {
+                    finalColor = Constants.Color.material_orange
+                } else if (colorString == "Blue") {
+                    finalColor = Constants.Color.material_blue
+                }
+                
+                let maps = self.loadMapsForHospital(hospitalName: name)
                 
                 
-                let newHospital = Hospital(name: name, acronym: acronym, maps: [], color: UIColor.black)
+                let newHospital = Hospital(name: name, acronym: acronym, maps: maps, color: finalColor)
                 hospitals.append(newHospital)
                 
             }
@@ -190,6 +204,29 @@ class AppManager {
             fatalError("Could not save to core data")
         }
 
+    }
+    
+    func removeMapFromHospital(mapName: String) {
+        let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let mapFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Plot_")
+        do {
+            let fetchedMaps = try managedObjectContext.fetch(mapFetch)
+            for i in 0..<fetchedMaps.count {
+                let entry = fetchedMaps[i] as! Plot_
+                let mName = entry.name
+                if (mName == mapName) {
+                    managedObjectContext.delete(entry)
+                }
+            }
+        } catch {
+            fatalError("Unable to delete map from history")
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Could not save MOC in removeMapFromHospital()")
+        }
     }
     
     func addHosptial(name: String, acronym: String, color: UIColor) {

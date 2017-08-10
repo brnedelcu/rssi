@@ -12,12 +12,18 @@ import CoreData
 class AddMapViewController: UIViewController {
     @IBOutlet weak var mapNameField: UITextField!
     @IBOutlet weak var imgView: UIImageView!
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var createMapButton: UIButton!
+    
     var hospitalName : String!
     var image : UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         imgView.image = self.image
+        cancelButton.layer.cornerRadius = 5.0
+        createMapButton.layer.cornerRadius = 5.0
     }
     
     // This action will run when user pressed "Create Map"
@@ -60,6 +66,11 @@ class AddMapViewController: UIViewController {
         
         self.performSegue(withIdentifier: "unwindToHospitalViewController", sender: self)
         
+    }
+    
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

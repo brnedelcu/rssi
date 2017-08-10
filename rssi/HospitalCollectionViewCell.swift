@@ -12,5 +12,5 @@ class HospitalCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var acronymLabel: UILabel!
     @IBOutlet weak var hostpitalNameLabel: UILabel!
     @IBOutlet weak var mapCountLabel: UILabel!
-    
+    @IBOutlet weak var colorView: UIView!
 }

@@ -15,6 +15,7 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var hospitalNameTextField: UITextField!
     @IBOutlet weak var acronymTextField: UITextField!
     
@@ -24,6 +25,7 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
         pickerView.delegate = self
         
         doneButton.layer.cornerRadius = 5.0
+        cancelButton.layer.cornerRadius = 5.0
         // Do any additional setup after loading the view.
     }
     
@@ -40,15 +42,15 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         var colorTheme = UIColor()
         if (c == "Red") {
-            colorTheme = UIColor.red
+            colorTheme = Constants.Color.material_red
         } else if (c == "Green") {
-            colorTheme = UIColor.green
+            colorTheme = Constants.Color.material_green
         } else if (c == "Yellow") {
-            colorTheme = UIColor.yellow
+            colorTheme = Constants.Color.material_yellow
         } else if (c == "Orange") {
-            colorTheme = UIColor.orange
+            colorTheme = Constants.Color.material_orange
         } else if (c == "blue") {
-            colorTheme = UIColor.blue
+            colorTheme = Constants.Color.material_blue
         }
         
         appManager.addHosptial(name: hospitalName, acronym: acronym, color: colorTheme)
@@ -72,6 +74,11 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     }
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -87,27 +94,27 @@ class AddHospitalViewController: UIViewController, UIPickerViewDataSource, UIPic
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
         if (colors[row] == "Red") {
-            let attribute = [NSForegroundColorAttributeName: UIColor.red]
+            let attribute = [NSForegroundColorAttributeName: Constants.Color.material_red]
             let string = NSAttributedString(string: "Red", attributes: attribute)
             return string
             
         } else if (colors[row] == "Green") {
-            let attribute = [NSForegroundColorAttributeName: UIColor.green]
+            let attribute = [NSForegroundColorAttributeName: Constants.Color.material_green]
             let string = NSAttributedString(string: "Green", attributes: attribute)
             return string
             
         } else if (colors[row] == "Blue") {
-            let attribute = [NSForegroundColorAttributeName: UIColor.blue]
+            let attribute = [NSForegroundColorAttributeName: Constants.Color.material_blue]
             let string = NSAttributedString(string: "Blue", attributes: attribute)
             return string
             
         } else if (colors[row] == "Yellow") {
-            let attribute = [NSForegroundColorAttributeName: UIColor.yellow]
+            let attribute = [NSForegroundColorAttributeName: Constants.Color.material_yellow]
             let string = NSAttributedString(string: "Yellow", attributes: attribute)
             return string
             
         } else {
-            let attribute = [NSForegroundColorAttributeName: UIColor.orange]
+            let attribute = [NSForegroundColorAttributeName: Constants.Color.material_orange]
             let string = NSAttributedString(string: "Orange", attributes: attribute)
             return string
         }

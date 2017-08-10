@@ -81,6 +81,19 @@ extension HospitalViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "mapSegue", sender: self)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let map = maps[indexPath.row]
+            maps.remove(at: indexPath.row)
+            appManager.removeMapFromHospital(mapName: map.label)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension HospitalViewController {
