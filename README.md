@@ -6,5 +6,6 @@ This applciation was written for the Ipad Air 2 with Swift 3.0
 
 ## Adding / Cropping maps 
 <img src='http://i.imgur.com/PPj3eCW.gif' title='Video Walkthrough' width='400px' style='width: 800px; height: 200px;' alt='Video Walkthrough' />
+
 ## Managing and plotting gateways
 <img src='http://i.imgur.com/gfhOPa6.gif' title='Video Walkthrough' width='400px' style='width: 800px; height: 200px;' alt='Video Walkthrough' />
