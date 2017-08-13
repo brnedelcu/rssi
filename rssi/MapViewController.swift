@@ -37,9 +37,9 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let data = appManager.createPDFfromView(view: mapImageView)
+       // let data = appManager.createPDFfromView(view: mapImageView)
     
-        self.sendMail(data: data)
+        //self.sendMail(data: data)
     }
     
     
