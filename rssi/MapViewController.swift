@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 import CoreGraphics
+import MessageUI
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var mapImageView: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
@@ -19,6 +20,8 @@ class MapViewController: UIViewController {
     var map : Map! // to be set in prepare for segue
     var hospitalName: String!
     var plotting = false
+    var movingGateway = false
+    var gatewayBeingMoved = Gateway()
     
     
     override func viewDidLoad() {
@@ -28,8 +31,32 @@ class MapViewController: UIViewController {
         statusLabel.text = "     View Gateway Mode"
         statusLabel.textColor = UIColor.white
         statusLabel.backgroundColor = Constants.Color.material_blue
+        
+        
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let data = appManager.createPDFfromView(view: mapImageView)
+    
+        self.sendMail(data: data)
+    }
+    
+    
+    @IBAction func userPanned(_ sender: UIPanGestureRecognizer) {
+        if (!movingGateway) {
+            return
+        } else {
+            let panCoordinates = sender.location(in: mapImageView)
+            let gateway = mapImageView.subviews[0]
+            let frame = CGRect(x: panCoordinates.x - 20, y: panCoordinates.y - 20, width: 20, height: 20)
+            gatewayBeingMoved.x = frame.origin.x + 10
+            gatewayBeingMoved.y = frame.origin.y + 10
+            let gatewayView = UIView(frame: frame)
+            gateway.frame = frame
+            mapImageView.addSubview(gatewayView)
+        }
+    }
     
     @IBAction func plotGatewayButtonPressed(_ sender: Any) {
         if (plotting) {
@@ -38,6 +65,20 @@ class MapViewController: UIViewController {
             statusLabel.textColor = UIColor.white
             statusLabel.backgroundColor = Constants.Color.material_blue
             plotGatewayButton.title = "     Plot Gateway"
+        } else if (movingGateway) {
+            
+            statusLabel.text = "     View Gateway Mode"
+            statusLabel.textColor = UIColor.white
+            statusLabel.backgroundColor = Constants.Color.material_blue
+            plotGatewayButton.title = "     Plot Gateway"
+            
+            appManager.saveGatewayToMap(hospitalName: hospitalName, mapName: map.label, gateway: gatewayBeingMoved)
+            
+            gatewayBeingMoved = Gateway()
+            movingGateway = false
+            plotting = !plotting
+            self.loadGateways()
+                
         } else {
             // insert styling here to show that we are plotting
             statusLabel.text = "     Plotting Mode"
@@ -51,6 +92,9 @@ class MapViewController: UIViewController {
     
     
     @IBAction func userTappedScreen(_ sender: UITapGestureRecognizer) {
+        if (movingGateway) {
+            return
+        }
         if (plotting) {
             let tapCoordinates = sender.location(in: mapImageView)
             self.saveGatewayLocation(x: tapCoordinates.x, y: tapCoordinates.y)
@@ -69,6 +113,10 @@ class MapViewController: UIViewController {
                     }
                     
                     self.loadGateways()
+                })
+                
+                let adjustLocationAction = UIAlertAction(title: "Move Gateway", style: UIAlertActionStyle.default, handler: { (action) in
+                    self.setMoveGatewayMode(g: result)
                 })
                 
                 let markAsUninstalledAction = UIAlertAction(title: "Mark as unisntalled", style: UIAlertActionStyle.default, handler: { (action) in
@@ -103,6 +151,7 @@ class MapViewController: UIViewController {
                     alertController.addAction(markAsInstalledAction)
                 }
                 alertController.addAction(doneAction)
+                alertController.addAction(adjustLocationAction)
                 alertController.addAction(removeAction)
                 
                 
@@ -162,6 +211,35 @@ extension MapViewController {
         }
         
     }
+    
+    
+}
+
+extension MapViewController {
+    func setMoveGatewayMode(g: Gateway) {
+        movingGateway = true
+        appManager.removeGatewayFromMap(hospitalName: hospitalName, mapName: map.label, gway: g)
+        
+        for view in mapImageView.subviews {
+            view.removeFromSuperview()
+        }
+        
+        let frame = CGRect(x: g.x - 10, y: g.y - 10, width: 20, height: 20)
+        let gatewayView = UIView(frame: frame)
+        gatewayView.layer.cornerRadius = 10.0
+        gatewayView.backgroundColor = Constants.Color.material_red
+        if (g.installed) {
+            gatewayView.backgroundColor = Constants.Color.material_blue
+        }
+        
+        mapImageView.addSubview(gatewayView)
+        
+        statusLabel.text = "Drag where you want the gateway ..."
+        plotGatewayButton.title = "Finished"
+        statusLabel.backgroundColor = Constants.Color.material_orange
+        gatewayBeingMoved = g
+        
+    }
 }
 
 extension MapViewController {
@@ -186,6 +264,22 @@ extension MapViewController {
         }
         
         return nil
+    }
+}
+
+extension MapViewController {
+    func sendMail(data: Data) {
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+        composeVC.setSubject("Map from Intelligent Locations")
+        composeVC.setToRecipients(["dmorton2297@gmail.com"])
+        composeVC.addAttachmentData(data, mimeType: "", fileName: "map.pdf")
+        self.present(composeVC, animated: true, completion: nil)
+        
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

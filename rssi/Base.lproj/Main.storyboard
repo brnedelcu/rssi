@@ -262,6 +262,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="CBO-MY-FyT" appends="YES" id="RHb-lH-FBr"/>
+                            <outletCollection property="gestureRecognizers" destination="QYs-kW-UZk" appends="YES" id="2rT-RS-Sb5"/>
                         </connections>
                     </view>
                     <connections>
@@ -276,6 +277,11 @@
                         <action selector="userTappedScreen:" destination="nSC-Tj-1mO" id="BBd-VM-dk6"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="QYs-kW-UZk">
+                    <connections>
+                        <action selector="userPanned:" destination="nSC-Tj-1mO" id="adT-sv-cU5"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1366.40625" y="-430.078125"/>
         </scene>

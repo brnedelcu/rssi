@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 import UIKit
+import QuartzCore
+import MessageUI
 
 let appManager = AppManager()
 
@@ -261,6 +263,25 @@ class AppManager {
         let newHospital = Hospital(name: name, acronym: acronym, maps: [], color: color)
         hospitals.append(newHospital)
     }
+    
+}
+
+extension AppManager {
+    func createPDFfromView(view: UIView) -> Data {
+        let pdfData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, view.bounds, nil)
+        UIGraphicsBeginPDFPage()
+        let pdfContext = UIGraphicsGetCurrentContext()
+        
+        
+        view.layer.render(in: pdfContext!)
+        UIGraphicsEndPDFContext()
+        
+        let result = pdfData as Data
+        
+        return result
+    }
+    
     
 }
 
