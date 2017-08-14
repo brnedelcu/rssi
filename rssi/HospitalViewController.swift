@@ -63,6 +63,11 @@ extension HospitalViewController {
             self.present(cropViewController, animated: true, completion: nil)
         }
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        activityIndicator.stopAnimating()
+    }
 }
 
 extension HospitalViewController {
