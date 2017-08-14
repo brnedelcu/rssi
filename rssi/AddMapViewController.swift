@@ -34,6 +34,7 @@ class AddMapViewController: UIViewController {
         let plot = Plot_(context: managedObjectContext)
         plot.image = UIImagePNGRepresentation(image)! as NSData
         plot.name = mapNameField.text
+        plot.pinsize = 20.0
         
         
         let hospitalFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospital_")

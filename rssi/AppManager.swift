@@ -77,6 +77,7 @@ class AppManager {
                         let imageData = plot.image as Data?
                         let img = UIImage(data: imageData!)
                         let gateways = plot.gateways
+                        let pinSize = CGFloat(plot.pinsize)
                         
                         for gateway in gateways! {
                             print("We found a gateway for this map!")
@@ -94,7 +95,7 @@ class AppManager {
                             
                         }
                         
-                        let m = Map(mapImage: img!, gateways: gWays, label: name!)
+                        let m = Map(mapImage: img!, gateways: gWays, label: name!, pinSize: pinSize)
                         maps.append(m)
                     }
                 }
@@ -210,6 +211,7 @@ class AppManager {
         }
 
     }
+    
     
     func removeMapFromHospital(mapName: String) {
         let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

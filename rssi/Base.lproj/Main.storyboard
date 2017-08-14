@@ -154,7 +154,7 @@
                                         <rect key="frame" x="0.0" y="28" width="728" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awp-4D-62O" id="sdL-5P-d7Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="728" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkF-3N-ety">
@@ -223,8 +223,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-6r-jjU">
-                                <rect key="frame" x="20" y="72" width="728" height="932"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="a0Q-6r-jjU">
+                                <rect key="frame" x="20" y="124" width="728" height="848"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kwQ-1r-V8m">
                                 <rect key="frame" x="0.0" y="980" width="768" height="44"/>
@@ -239,36 +241,67 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6o-1O-fL7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6o-1O-fL7">
                                 <rect key="frame" x="0.0" y="980" width="631" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="CUR-1E-L3v"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MyV-FX-lku">
+                                <rect key="frame" x="565" y="64" width="203" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fru-CL-yLN">
+                                        <rect key="frame" x="103" y="8" width="42" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="57"/>
+                                        <state key="normal" title="-"/>
+                                        <connections>
+                                            <action selector="zoomOutButtonPressed:" destination="nSC-Tj-1mO" eventType="touchUpInside" id="bMG-Z0-Pqi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96Y-im-Jx7">
+                                        <rect key="frame" x="153" y="8" width="42" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="35"/>
+                                        <state key="normal" title="+"/>
+                                        <connections>
+                                            <action selector="zoomInButtonPressed:" destination="nSC-Tj-1mO" eventType="touchUpInside" id="whc-tQ-a8v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1G0-C6-46X">
+                                        <rect key="frame" x="8" y="8" width="87" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="Menu"/>
+                                        <connections>
+                                            <action selector="menuButtonPressed:" destination="nSC-Tj-1mO" eventType="touchUpInside" id="g5x-Va-kXx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.6075390625" green="0.6075390625" blue="0.6075390625" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="top" secondItem="nzt-BW-n02" secondAttribute="bottom" constant="8" id="VhI-8i-JeD"/>
-                            <constraint firstItem="yIK-O9-S6r" firstAttribute="top" secondItem="a0Q-6r-jjU" secondAttribute="bottom" constant="20" id="aCw-2A-MX6"/>
-                            <constraint firstAttribute="trailing" secondItem="O6o-1O-fL7" secondAttribute="trailing" constant="137" id="cZA-g1-6M4"/>
-                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="trailing" secondItem="QUk-rq-wlc" secondAttribute="trailingMargin" id="hZm-xD-IPA"/>
-                            <constraint firstItem="O6o-1O-fL7" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leading" id="jaC-KP-oxV"/>
-                            <constraint firstItem="a0Q-6r-jjU" firstAttribute="leading" secondItem="QUk-rq-wlc" secondAttribute="leadingMargin" id="n0z-Zl-tlh"/>
-                            <constraint firstAttribute="bottom" secondItem="O6o-1O-fL7" secondAttribute="bottom" constant="-1" id="uKb-Su-wbz"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="CBO-MY-FyT" appends="YES" id="RHb-lH-FBr"/>
                             <outletCollection property="gestureRecognizers" destination="QYs-kW-UZk" appends="YES" id="2rT-RS-Sb5"/>
                         </connections>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="mapImageView" destination="a0Q-6r-jjU" id="dWQ-aY-cUG"/>
+                        <outlet property="menuButton" destination="1G0-C6-46X" id="lGp-SG-Izf"/>
+                        <outlet property="menuView" destination="MyV-FX-lku" id="uIz-2W-NLY"/>
                         <outlet property="plotGatewayButton" destination="Kxm-QH-1Ru" id="dXk-fN-ghl"/>
                         <outlet property="statusLabel" destination="O6o-1O-fL7" id="Vo7-5g-kvP"/>
+                        <outlet property="zoomInButton" destination="96Y-im-Jx7" id="yYk-DQ-OXF"/>
+                        <outlet property="zoomOutButton" destination="fru-CL-yLN" id="RFA-Mt-cyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J85-c5-eYR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -16,12 +16,13 @@
     <entity name="Plot_" representedClassName="Plot_" syncable="YES" codeGenerationType="class">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinsize" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="gateways" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gateway_" inverseName="relationship" inverseEntity="Gateway_" syncable="YES"/>
         <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hospital_" inverseName="relationship" inverseEntity="Hospital_" syncable="YES"/>
     </entity>
     <elements>
         <element name="Gateway_" positionX="457" positionY="-126" width="128" height="120"/>
         <element name="Hospital_" positionX="-353" positionY="-135" width="128" height="105"/>
-        <element name="Plot_" positionX="-63" positionY="-306" width="128" height="103"/>
+        <element name="Plot_" positionX="-63" positionY="-306" width="128" height="120"/>
     </elements>
 </model>

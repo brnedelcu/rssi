@@ -17,11 +17,22 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var plotGatewayButton: UIBarButtonItem!
     
+    @IBOutlet weak var zoomInButton: UIButton!
+    @IBOutlet weak var zoomOutButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
+    
+    @IBOutlet weak var menuView: UIView!
+    
     var map : Map! // to be set in prepare for segue
     var hospitalName: String!
     var plotting = false
     var movingGateway = false
+    var pinSizeChanged = false
     var gatewayBeingMoved = Gateway()
+    var originalImageFrame = CGRect()
+    
+    var deltaXCounter = 0
+    var deltaYCounter = 0
     
     
     override func viewDidLoad() {
@@ -32,6 +43,12 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
         statusLabel.textColor = UIColor.white
         statusLabel.backgroundColor = Constants.Color.material_blue
         
+        zoomInButton.layer.cornerRadius = 5.0
+        zoomOutButton.layer.cornerRadius = 5.0
+        menuButton.layer.cornerRadius = 5.0
+        
+        menuView.layer.cornerRadius = 5.0
+        originalImageFrame = self.mapImageView.frame
         
         
     }
@@ -44,7 +61,33 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
     
     @IBAction func userPanned(_ sender: UIPanGestureRecognizer) {
+        
+        
+        
+        let velX = sender.velocity(in: self.view).x
+        let velY = sender.velocity(in: self.view).y
+        
+        let hypotnuseSquared = pow(velX, 2) + pow(velY, 2)
+        let hypotnuse = sqrt(hypotnuseSquared)
+        
+        let changeRate = hypotnuse / 100
+        
+        
+        
         if (!movingGateway) {
+            let velocity = sender.velocity(in: self.view)
+            
+            if (velocity.x > 0) {
+                mapImageView.center.x += changeRate
+            } else {
+                mapImageView.center.x -= changeRate
+            }
+            
+            if (velocity.y > 0) {
+                mapImageView.center.y += changeRate
+            } else {
+                mapImageView.center.y -= changeRate
+            }
             return
         } else {
             let panCoordinates = sender.location(in: mapImageView)
@@ -57,6 +100,7 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
             mapImageView.addSubview(gatewayView)
         }
     }
+    
     
     @IBAction func plotGatewayButtonPressed(_ sender: Any) {
         if (plotting) {
@@ -90,6 +134,58 @@ class MapViewController: UIViewController, MFMailComposeViewControllerDelegate {
         plotting = !plotting
     }
     
+    
+    @IBAction func userPinched(_ sender: UIPinchGestureRecognizer) {
+        if sender.velocity > 0 {
+            let tr = mapImageView.transform.scaledBy(x: 1.02, y: 1.02)
+            self.mapImageView.transform = tr
+            mapImageView.center = sender.location(in: self.mapImageView)
+        } else {
+            let tr = mapImageView.transform.scaledBy(x: 0.98, y: 0.98)
+            self.mapImageView.transform = tr
+            mapImageView.center = sender.location(in: self.mapImageView)
+        }
+        
+    }
+    
+    
+    @IBAction func zoomInButtonPressed(_ sender: Any) {
+        let tr = mapImageView.transform.scaledBy(x: 1.10, y: 1.10)
+        self.mapImageView.transform = tr
+        
+       // mapImageView.center = sender.location(in: self.mapImageView)
+    }
+    
+    
+    
+    @IBAction func zoomOutButtonPressed(_ sender: Any) {
+        let tr = mapImageView.transform.scaledBy(x: 0.90, y: 0.90)
+        self.mapImageView.transform = tr
+        //mapImageView.center = sender.location(in: self.mapImageView)
+    }
+    
+    
+    @IBAction func menuButtonPressed(_ sender: UIButton) {
+         let alertController = UIAlertController(title: "Menu", message: "Select and Option", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+       
+        let exportAction = UIAlertAction(title: "Export to PDF", style: UIAlertActionStyle.default) { (action) in
+            self.sendMail(data: appManager.createPDFfromView(view: self.mapImageView))
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        
+        
+        alertController.addAction(exportAction)
+        alertController.addAction(cancelAction)
+        
+        let popOver = alertController.popoverPresentationController
+        popOver?.sourceView = self.view
+        popOver?.sourceRect = CGRect(x: self.view.frame.width - menuView.frame.width, y: sender.frame.origin.y, width: 100, height: 100)
+        
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     @IBAction func userTappedScreen(_ sender: UITapGestureRecognizer) {
         if (movingGateway) {
@@ -203,6 +299,7 @@ extension MapViewController {
             let gatewayView = UIView(frame: frame)
             gatewayView.layer.cornerRadius = 10.0
             gatewayView.backgroundColor = Constants.Color.material_red
+            gatewayView.alpha = 0.8
             if (entry.installed) {
                 gatewayView.backgroundColor = Constants.Color.material_blue
             }

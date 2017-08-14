@@ -13,8 +13,9 @@ class Map {
     var mapImage : UIImage = UIImage()
     var gateways : [Gateway] = [Gateway()]
     var label: String = ""
+    var pinSize : CGFloat = 5.0
     
-    convenience init(mapImage: UIImage, gateways: [Gateway], label: String) {
+    convenience init(mapImage: UIImage, gateways: [Gateway], label: String, pinSize: CGFloat) {
         self.init()
         self.mapImage = mapImage
         self.gateways = gateways

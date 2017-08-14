@@ -22,6 +22,7 @@
 		5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3046661F1D630900E89DA7 /* AppManager.swift */; };
 		5C5659BA1F1E719000C329F7 /* AddHospitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */; };
 		5C57FCF11F4023570098BBAA /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 5C57FCF01F4023570098BBAA /* README.md */; };
+		5C9C63571F422CE5006C0107 /* ChangePinSizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C63561F422CE5006C0107 /* ChangePinSizeViewController.swift */; };
 		5CC39ED61F155B030006BAF4 /* Pods in Resources */ = {isa = PBXBuildFile; fileRef = 5CC39ED41F155A4F0006BAF4 /* Pods */; };
 		5CC62F5B1F3A15D3004307CB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC62F5A1F3A15D3004307CB /* MapViewController.swift */; };
 		5CC62F5D1F3A7240004307CB /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC62F5C1F3A7240004307CB /* MapTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 		5C3046661F1D630900E89DA7 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		5C5659B91F1E719000C329F7 /* AddHospitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHospitalViewController.swift; sourceTree = "<group>"; };
 		5C57FCF01F4023570098BBAA /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5C9C63561F422CE5006C0107 /* ChangePinSizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePinSizeViewController.swift; sourceTree = "<group>"; };
 		5CC39ED41F155A4F0006BAF4 /* Pods */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pods; sourceTree = "<group>"; };
 		5CC62F5A1F3A15D3004307CB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5CC62F5C1F3A7240004307CB /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				5CFD39711F31101A00401FDC /* AddMapViewController.swift */,
 				5CC62F5A1F3A15D3004307CB /* MapViewController.swift */,
 				5CC62F5C1F3A7240004307CB /* MapTableViewCell.swift */,
+				5C9C63561F422CE5006C0107 /* ChangePinSizeViewController.swift */,
 			);
 			path = rssi;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				5CC62F5B1F3A15D3004307CB /* MapViewController.swift in Sources */,
 				5C3046631F1D55AF00E89DA7 /* Map.swift in Sources */,
 				5C2D43E71F15446800DDFC92 /* ViewController.swift in Sources */,
+				5C9C63571F422CE5006C0107 /* ChangePinSizeViewController.swift in Sources */,
 				5C3046671F1D630900E89DA7 /* AppManager.swift in Sources */,
 				5CC62F5D1F3A7240004307CB /* MapTableViewCell.swift in Sources */,
 				5C2D43E51F15446800DDFC92 /* AppDelegate.swift in Sources */,
